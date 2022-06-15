@@ -1,6 +1,6 @@
 {
   "name": "prybar",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Allows you to modify Native React-Native configuration files programatically.",
   "main": "dist/index.js",
   "scripts": {
