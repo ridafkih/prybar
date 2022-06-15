@@ -1,11 +1,11 @@
-import { indent, quote, stitch } from "@/utils/codegen/agnostic";
+import { indent, normalize, quote, stitch } from "@/utils/codegen/agnostic";
 
 /**
  * Creates a .gradle file classpath reference.
  * @param value The value for inside the classpath.
  */
 export const classpath = (value: string) => {
-  return `classpath(${quote(value)})`;
+  return `classpath(${quote(normalize(value))})`;
 };
 
 /**
@@ -14,7 +14,7 @@ export const classpath = (value: string) => {
  * @param url If applicable, the source for the repository.
  */
 export const repository = (keyword: string, url?: string) => {
-  if (url) return `${keyword} { url ${quote(url, "double")} }`;
+  if (url) return `${keyword} { url ${quote(normalize(url), "double")} }`;
   return `${keyword}()`;
 };
 
@@ -23,7 +23,7 @@ export const repository = (keyword: string, url?: string) => {
  * @param name The name of the plugin to import.
  */
 export const pluginImport = (name: string) => {
-  return `apply plugin: ${quote(name, "double")}`;
+  return `apply plugin: ${quote(normalize(name), "double")}`;
 };
 
 /**
@@ -33,8 +33,8 @@ export const pluginImport = (name: string) => {
  */
 export const pluginConfig = (name: string, options: Record<string, string>) => {
   const configurations = Object.entries(options).map(([key, value]) => {
-    return indent(`${key} ${quote(value)}`, 4);
+    return indent(`${normalize(key)} ${quote(normalize(value))}`, 4);
   });
 
-  return stitch(`\n${name} {`, ...configurations, "}");
+  return stitch(`\n${normalize(name)} {`, ...configurations, "}");
 };

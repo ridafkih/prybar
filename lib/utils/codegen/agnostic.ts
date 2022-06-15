@@ -29,25 +29,30 @@ export const indent = (value: string, count: number = 2) => {
  * Removes unecessary characters from a string.
  * @param value The string to clean.
  */
-export const normalizeString = (value: string) => {
+export const normalize = (value: string) => {
   return value.replace(/[^A-z0-9\.:%-_.~/g, ""]/g, "");
 };
 
 /**
- * Applies the `normalizeString` function, which
+ * Applies the `normalize` function, which
  * removes unecessary characters from a string to
  * all the values in a key-value pair.
  * @param record The object of which values to clean.
  */
-export const normalizeObject = <T extends Record<string, string>>(
+export const normalizeObject = <T extends Record<string, string | undefined>>(
   record: T
 ) => {
   return Object.entries(record).reduce((accumulator: T, [key, value]) => {
+    if (!value) return accumulator;
     return {
       ...accumulator,
-      [key]: normalizeString(value),
+      [key]: normalize(value),
     };
   }, <T>{});
+};
+
+export const concat = (...values: string[]) => {
+  return values.join("");
 };
 
 /**
