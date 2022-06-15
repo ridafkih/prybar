@@ -13,7 +13,7 @@ Y'know, just use your favourite package manager!
 
 ```bash
 npm i prybar     # 🎩 A classic move!
-yarn add prybar  # 🎉! Convenience, and pretty emojis!
+yarn add prybar  # 🎉 Convenience, and pretty emojis!
 pnpm i prybar    # 😤 For hustlin' and bustlin'!
 ```
 
