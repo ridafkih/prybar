@@ -13,7 +13,7 @@ export const classpath = (value: string) => {
  * @param keyword The keyword for the reference.
  * @param url If applicable, the source for the repository.
  */
-export const repository = (keyword: string, url?: string) => {
+export const repository = (keyword: string, url: string) => {
   if (url) return `${keyword} { url ${quote(normalize(url), "double")} }`;
   return `${keyword}()`;
 };

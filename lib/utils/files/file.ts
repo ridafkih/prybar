@@ -8,10 +8,11 @@ import { readFileSync, writeFileSync } from "fs";
  */
 export const readFile = (...path: string[]) => {
   const fullPath = join(...path);
-  const content = readFileSync(fullPath, "utf-8");
+  let content = readFileSync(fullPath, "utf-8");
 
-  const write = (content: string) => {
-    writeFileSync(fullPath, content, "utf-8");
+  const write = (newContent: string) => {
+    writeFileSync(fullPath, newContent, "utf-8");
+    content = newContent;
   };
 
   return { content, write };

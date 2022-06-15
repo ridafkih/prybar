@@ -1,8 +1,7 @@
 import { getConfigKeywordData } from "@/utils/parsing/gradle";
 import { insert, indent, stitch } from "@/utils/codegen/agnostic";
 import { classpath, repository } from "@/utils/codegen/gradle";
-
-type GradleRepository = { name: string; url?: string };
+import { GradleRepository } from "@/@types/gradle-repository";
 
 /**
  * Adds dependencies to the buildscript section of the

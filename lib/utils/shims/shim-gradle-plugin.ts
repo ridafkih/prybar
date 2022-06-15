@@ -7,7 +7,7 @@ import { pluginImport, pluginConfig } from "@/utils/codegen/gradle";
  * @param name The name of the plugin to add.
  * @param options If applicable, the plugin options.
  */
-export const addAppPlugin = (
+export const addPlugin = (
   content: string,
   name: string,
   options?: Record<string, string>
