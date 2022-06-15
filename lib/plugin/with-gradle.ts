@@ -47,22 +47,27 @@ export const withGradle = (
         return !hasGradlePlugin(files.app.content, name);
       });
 
+      const modified = {
+        project: files.project.content,
+        app: files.app.content,
+      };
+
       if (absentDependencies.length > 0)
-        files.project.write(
-          shimBuildScriptDependencies(files.project.content, absentDependencies)
+        modified.project = files.project.write(
+          shimBuildScriptDependencies(modified.project, absentDependencies)
         );
 
       if (absentRepositories.length > 0)
-        files.project.write(
-          shimBuildScriptRepositories(files.project.content, absentRepositories)
+        modified.project = files.project.write(
+          shimBuildScriptRepositories(modified.project, absentRepositories)
         );
 
       if (absentPlugins.length > 0)
-        plugins.forEach((plugin) =>
-          files.app.write(
-            addPlugin(files.app.content, plugin.name, plugin.options)
-          )
-        );
+        plugins.forEach((plugin) => {
+          modified.app = files.app.write(
+            addPlugin(modified.app, plugin.name, plugin.options)
+          );
+        });
 
       return config;
     },
