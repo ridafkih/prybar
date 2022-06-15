@@ -49,3 +49,30 @@ export const normalizeObject = <T extends Record<string, string>>(
     };
   }, <T>{});
 };
+
+/**
+ * Stitches an array of lines into a single string.
+ * @param lines The lines to stitch.
+ */
+export const stitch = (...lines: string[]) => {
+  return lines.join("\n");
+};
+
+/**
+ * Inserts lines into a set of lines at a certain position.
+ * @param original The lines to insert into.
+ * @param lines  The lines to add.
+ * @param position The position to add the new lines.
+ * @returns An array containing all lines after the insert.
+ */
+export const insert = (
+  original: string[],
+  lines: string[],
+  position: number
+) => {
+  return [
+    ...original.slice(0, position),
+    ...lines,
+    ...original.slice(position, original.length),
+  ];
+};
