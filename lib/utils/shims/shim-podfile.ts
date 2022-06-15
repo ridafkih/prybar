@@ -20,5 +20,5 @@ export const shimPodfile = ({ content, pods, anchor }: ShimPodfileOptions) => {
   const anchorIndex = lines.findIndex(findAnchor);
   const anchorLine = lines[anchorIndex];
 
-  return insert(lines, [stitch(changes, anchorLine)], anchorIndex);
+  return stitch(insert(lines, [stitch(changes, anchorLine)], anchorIndex));
 };

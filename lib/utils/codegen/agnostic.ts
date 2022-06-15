@@ -59,7 +59,8 @@ export const concat = (...values: string[]) => {
  * Stitches an array of lines into a single string.
  * @param lines The lines to stitch.
  */
-export const stitch = (...lines: string[]) => {
+export const stitch = (...lines: string[] | [string[]]) => {
+  if (lines.length === 1 && Array.isArray(lines[0])) return lines[0].join("\n");
   return lines.join("\n");
 };
 
