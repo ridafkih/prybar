@@ -1,3 +1,4 @@
+import { ExpoConfig } from "@/@types/expo";
 import { GradleRepository } from "@/@types/gradle-repository";
 import { readFile } from "@/utils/files/file";
 import {
@@ -10,10 +11,7 @@ import {
   shimBuildScriptRepositories,
 } from "@/utils/shims/shim-gradle-buildscript";
 import { addPlugin } from "@/utils/shims/shim-gradle-plugin";
-import {
-  ExportedConfigWithProps,
-  withDangerousMod,
-} from "@expo/config-plugins";
+import { withDangerousMod } from "@expo/config-plugins";
 
 type WithGradleOptions = {
   dependencies: string[];
@@ -22,7 +20,7 @@ type WithGradleOptions = {
 };
 
 export const withGradle = (
-  config: ExportedConfigWithProps,
+  config: ExpoConfig,
   { dependencies, repositories, plugins }: WithGradleOptions
 ) => {
   return withDangerousMod(config, [
