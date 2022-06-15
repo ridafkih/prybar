@@ -5,6 +5,7 @@ import { hasPodReference } from "@/utils/parsing/cocoapod";
 import { shimPodfile } from "@/utils/shims/shim-podfile";
 import { pod } from "@/utils/codegen/cocoapods";
 import { ExpoConfig } from "@/@types/expo";
+import { indent } from "@/utils/codegen/agnostic";
 
 /**
  * Retroactively add pods with a Expo config plugin.
@@ -31,7 +32,7 @@ export const withPods = (
         shimPodfile({
           content: file.content,
           anchor: "use_frameworks",
-          pods: missingPods.map(pod),
+          pods: missingPods.map((options) => indent(pod(options))),
         })
       );
       return config;
