@@ -1,0 +1,22 @@
+{
+  "name": "prybar",
+  "version": "0.1.0-pre",
+  "description": "Allows you to modify Native React-Native configuration files programatically. 🔧",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --declaration && tsc-alias"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^17.0.43",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.7.0",
+    "ts-node": "^10.8.1",
+    "tsc-alias": "^1.6.9",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.3"
+  }
+}
