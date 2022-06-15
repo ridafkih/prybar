@@ -1,7 +1,7 @@
 {
   "name": "prybar",
   "version": "0.1.0-pre",
-  "description": "Allows you to modify Native React-Native configuration files programatically. 🔧",
+  "description": "Allows you to modify Native React-Native configuration files programatically.",
   "main": "dist/index.js",
   "scripts": {
     "build": "tsc --declaration && tsc-alias"
